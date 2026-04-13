@@ -5,23 +5,23 @@
   gap: 20px;
 }
 
-.loop-container {
+.loop__container {
   overflow: hidden;
   width: 100%;
   padding: 20px 0;
 }
 
-.loop-container:hover {
+.loop__container:hover {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   cursor: grab;
 }
 
-.loop-container::-webkit-scrollbar {
+.loop__container::-webkit-scrollbar {
   display: none;
 }
 
-.loop-track {
+.loop__track {
   display: flex;
   gap: 1.6rem;
   width: max-content;
@@ -32,7 +32,7 @@
   }
 }
 
-.loop-track img {
+.loop__track img {
   width: 20rem;
   height: 15rem;
   object-fit: cover;

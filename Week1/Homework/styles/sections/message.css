@@ -6,7 +6,7 @@
   gap: 20px;
 }
 
-.message-list {
+.message__list {
   background: white;
   padding: 20px;
   border-radius: 20px;
@@ -15,10 +15,10 @@
   flex-direction: column;
 }
 
-.pseudo-icon::before {
+.pseudo__icon::before {
   content: " ❤️ ";
 }
 
-.pseudo-icon::after {
+.pseudo__icon::after {
   content: " ❤️ ";
 }

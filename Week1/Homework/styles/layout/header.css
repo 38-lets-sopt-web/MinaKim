@@ -23,8 +23,8 @@
   justify-content: center;
 }
 
-.avatar-img,
-.social-icon-img {
+.avatar__img,
+.social__icon__img {
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -33,17 +33,17 @@
   background-color: white;
 }
 
-.avatar-img:hover {
+.avatar__img:hover {
   box-shadow: var(--shadow-md);
 }
 
-.social-link {
+.social__link {
   display: flex;
   align-items: center;
   text-decoration: none;
 }
 
-.social-link:hover .social-icon-img {
+.social__link:hover .social-icon-img {
   transform: translateY(-5px);
   box-shadow: var(--shadow-sm);
   background: var(--primary-light);

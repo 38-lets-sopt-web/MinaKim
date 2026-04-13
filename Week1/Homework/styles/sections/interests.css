@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.card-container {
+.card__container {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -54,26 +54,26 @@
   gap: 20px;
 }
 
-.btn-like {
+.btn__like {
   border-radius: 20px;
   background: #8ec8ee;
   color: white;
   padding: 10px;
 }
 
-.btn-like:hover {
+.btn__like:hover {
   box-shadow: var(--shadow-md);
   background: #62b9f3;
 }
 
-.btn-dislike {
+.btn__dislike {
   border-radius: 20px;
   background: #fd9d95;
   color: white;
   padding: 10px;
 }
 
-.btn-dislike:hover {
+.btn__dislike:hover {
   box-shadow: var(--shadow-md);
   background: #f86a5d;
 }
