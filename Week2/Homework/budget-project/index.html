@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <title>가계부</title>
+  </head>
+  <body>
+    <header class="main__header">
+      <div class="header__left">
+        <button type="button" id="logo__icon" aria-label="홈으로 이동">
+          🐻
+        </button>
+      </div>
+      <div class="header__center"><h1>민나의 가계부</h1></div>
+      <div class="header__right"><p>SOPT 38th WEB</p></div>
+    </header>
+
+    <main>
+      <section class="filter__section" aria-labelledby="filter__heading">
+        <h2 id="filter__heading" class="visually-hidden">내역 필터링</h2>
+        <form id="filter__form" class="grid__container">
+          <div class="grid__item-1">
+            <label for="filter__title">제목</label>
+            <input
+              type="text"
+              id="filter__title"
+              placeholder="내역을 입력하세요."
+            />
+          </div>
+
+          <div class="filter__item grid-item-2">
+            <label for="filter__type">유형</label>
+            <select id="filter__type">
+              <option value="">전체</option>
+              <option value="수입">수입</option>
+              <option value="지출">지출</option>
+            </select>
+          </div>
+
+          <div class="filter__item grid__item-3">
+            <label for="filter__category">카테고리</label>
+            <select id="filter__category">
+              <option value="">전체</option>
+              <option value="교통">교통</option>
+              <option value="생활">생활</option>
+              <option value="월급">월급</option>
+              <option value="식비">식비</option>
+              <option value="문화">문화</option>
+              <option value="기타">기타</option>
+            </select>
+          </div>
+
+          <div class="filter__item grid__item-4">
+            <label for="filter__method">결제수단</label>
+            <select id="filter__method">
+              <option value="">전체 결제수단</option>
+              <option value="현금">현금</option>
+              <option value="신용카드">신용카드</option>
+              <option value="체크카드">체크카드</option>
+            </select>
+          </div>
+
+          <div class="btn__container grid__item-5">
+            <button id="btn__search">적용</button>
+            <button id="btn__reset">초기화</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="table__section" aria-labelledby="table__heading">
+        <h2 id="table__heading" class="visually-hidden">가계부 내역 목록</h2>
+        <div class="table__controls">
+          <label for="sort__date" class="visually-hidden">정렬 순서</label>
+          <select id="sort__date">
+            <option value="desc">최신순</option>
+            <option value="asc">오래된순</option>
+          </select>
+          <div class="action__buttons">
+            <button id="btn__delete__selected">선택 삭제</button>
+            <button id="btn__open__modal">추가</button>
+          </div>
+        </div>
+
+        <table id="data__table">
+          <thead>
+            <tr>
+              <th>
+                <input type="checkbox" id="check__all" aria-label="전체 선택" />
+              </th>
+              <th>제목</th>
+              <th>금액</th>
+              <th>날짜</th>
+              <th>카테고리</th>
+              <th>결제수단</th>
+            </tr>
+          </thead>
+          <tbody id="table__body"></tbody>
+          <tfoot>
+            <tr>
+              <td colspan="6" id="total__amount">합계: 0원</td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+    </main>
+
+    <div
+      id="modal__backdrop"
+      class="modal__backdrop hidden"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="modal__content">
+        <button type="button" class="modal__close" aria-label="모달 닫기">
+          X
+        </button>
+        <div id="modal__body"></div>
+      </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
