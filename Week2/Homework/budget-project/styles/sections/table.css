@@ -4,7 +4,6 @@
   background: var(--neutral-100);
   padding: 24px;
   border-radius: 16px;
-  box-shadow: var(--shadow-sm);
   border: 1px solid var(--neutral-500);
 }
 
@@ -79,7 +78,6 @@ input[type="checkbox"] {
   background-color: var(--neutral-100);
   color: #ff4d4f;
   border: 1px solid #ffccc7;
-  transition: var(--transition-base);
 }
 
 #btn__delete__selected:hover {
@@ -93,7 +91,6 @@ input[type="checkbox"] {
   background-color: var(--primary-100);
   color: var(--primary-500);
   border: 1px solid var(--primary-500);
-  transition: var(--transition-base);
 }
 
 #btn__open__modal:hover {
@@ -112,7 +109,6 @@ input[type="checkbox"] {
   border-radius: 8px;
   padding: 8px 12px;
   cursor: pointer;
-  transition: var(--transition-base);
 }
 
 #sort__date:hover {

@@ -8,7 +8,6 @@
   height: 80px;
   background-color: var(--neutral-100);
   border-bottom: 1px solid var(--neutral-500);
-  box-shadow: var(--shadow-sm);
 }
 
 .header__left,
@@ -38,7 +37,6 @@
 
 #logo__icon {
   font-size: 2rem;
-  transition: var(--transition-base);
 }
 
 #logo__icon:hover {
