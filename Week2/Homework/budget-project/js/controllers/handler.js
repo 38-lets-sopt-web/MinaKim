@@ -120,3 +120,16 @@ export const handleResetFilters = () => {
     renderTable();
   }
 };
+
+/* 헤더의 체크박스 상태에 따라 모든 항목의 체크박스를 선택/해제합니다.
+ */
+export const handleCheckAll = (e) => {
+  const isChecked = e.target.checked;
+  const checkboxes = document.querySelectorAll(
+    '#table__body input[type="checkbox"]',
+  );
+
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = isChecked;
+  });
+};

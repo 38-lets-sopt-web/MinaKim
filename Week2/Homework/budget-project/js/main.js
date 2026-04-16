@@ -1,5 +1,6 @@
 import {
   handleAddEntry,
+  handleCheckAll,
   handleDeleteSelected,
   handleOpenAddModal,
   handleOpenDetailModal,
@@ -46,6 +47,9 @@ const initActionEvents = () => {
       handleOpenDetailModal(parseInt(titleElement.dataset.id, 10));
     }
   });
+  document
+    .getElementById("check__all")
+    ?.addEventListener("change", handleCheckAll);
 };
 
 /**
