@@ -42,7 +42,7 @@
 }
 
 @media (max-width: 600px) {
-  .card-container {
+  .card__container {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
