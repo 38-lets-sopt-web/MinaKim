@@ -1,0 +1,57 @@
+/* 좋아하는것 (가로 스크롤 & 스냅) */
+#likes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.loop__container {
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.loop__container:hover {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  cursor: grab;
+}
+
+.loop__container::-webkit-scrollbar {
+  display: none;
+}
+
+.loop__track {
+  display: flex;
+  gap: 1.6rem;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+  will-change: transform;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.loop__track img {
+  width: 20rem;
+  height: 15rem;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 12px;
+  scroll-snap-align: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,22 @@
+:root {
+  /* 메인 디자인 토큰 */
+  --primary-color: #799c76;
+  --primary-light: #bfe0bc;
+  --primary-dark: #5c785a;
+
+  /* 글래스 커스텀 효과 */
+  --bg-color: #eaf7e9;
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.3);
+
+  /* 타이포 토큰 */
+  --text-main: #333333;
+  --text-muted: #666666;
+
+  /* 그림자 커스텀 효과 */
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+  /* 애니메이션 커스텀 */
+  --transition-base: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}

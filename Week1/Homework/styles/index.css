@@ -1,0 +1,15 @@
+/* 디자인 시스템 + css reset */
+
+@import "./base/reset.css";
+@import "./base/theme.css";
+
+/* 레이아웃 */
+@import "./layout/footer.css";
+@import "./layout/header.css";
+@import "./layout/navigation.css";
+
+/* 섹션 */
+@import "./sections/interests.css";
+@import "./sections/likes.css";
+@import "./sections/message.css";
+@import "./sections/photo-dump.css";
