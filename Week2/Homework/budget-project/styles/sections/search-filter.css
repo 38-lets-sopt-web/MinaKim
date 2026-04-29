@@ -15,7 +15,7 @@
 }
 
 .grid__item-1 {
-  grid-column: 1 / 4;
+  grid-column: 1 / -1;
   display: flex;
   align-items: center;
   gap: 12px;
