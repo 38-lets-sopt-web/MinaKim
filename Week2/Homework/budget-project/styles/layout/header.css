@@ -21,7 +21,6 @@
 }
 
 .header__center h1 {
-  margin: 0;
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--neutral-900);
