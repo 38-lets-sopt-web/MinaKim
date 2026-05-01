@@ -1,7 +1,10 @@
-import './index.css'
+import '@/styles/index.css';
+import {GamePage} from '@/pages/GamePage';
 
-function App() {
-  return <div className="text-red-500">hi</div>;
+export default function App() {
+  return (
+    <>
+      <GamePage />
+    </>
+  );
 }
-
-export default App;
