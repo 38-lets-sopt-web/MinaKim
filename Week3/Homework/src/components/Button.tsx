@@ -22,7 +22,7 @@ export const Button = ({
       disabled={disabled}
       aria-disabled={disabled}
       className={clsx(
-        'transition-alls rounded-lg px-4 py-2',
+        'transition-alls cursor-pointer rounded-lg px-4 py-2',
         'disabled:cursor-not-allowed disabled:opacity-50',
         backgroundColor,
         textColor
