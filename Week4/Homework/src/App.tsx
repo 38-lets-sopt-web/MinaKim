@@ -1,7 +1,5 @@
-import '@/index.css';
+import '@/styles/index.css';
 
-function App() {
-  return <div>hi</div>;
+export default function App() {
+  return <div className='text-h2'>hi</div>;
 }
-
-export default App;
