@@ -1,0 +1,84 @@
+/* 검색 필터 섹션 */
+
+.filter__section {
+  background: var(--neutral-100);
+  padding: 24px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  border: 1px solid var(--neutral-500);
+}
+
+.grid__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.grid__item-1 {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.grid__container label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-med);
+  color: var(--neutral-900);
+  white-space: nowrap;
+}
+
+.grid__container input,
+.grid__container select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--neutral-500);
+  border-radius: 10px;
+  font-size: var(--font-size-sm);
+  background-color: var(--neutral-500);
+}
+
+.grid__container input:focus,
+.grid__container select:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  background-color: var(--neutral-100);
+  box-shadow: 0 0 0 3px var(--primary-100);
+}
+
+.btn__container {
+  grid-column: 1 / 4;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+#btn__search,
+#btn__reset {
+  width: 120px;
+  height: 44px;
+  border-radius: 10px;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  border: none;
+}
+
+#btn__search {
+  background-color: var(--primary-500);
+  color: var(--neutral-100);
+}
+
+#btn__search:hover {
+  background-color: var(--primary-700);
+}
+
+#btn__reset {
+  background-color: var(--neutral-500);
+  color: var(--text-muted);
+}
+
+#btn__reset:hover {
+  background-color: #e2e2e2;
+  color: var(--neutral-900);
+}
