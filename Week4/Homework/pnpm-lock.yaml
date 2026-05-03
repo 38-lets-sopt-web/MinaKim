@@ -11,6 +11,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.2.4
         version: 4.2.4(vite@8.0.10(@types/node@24.12.2)(jiti@2.6.1))
+      '@use-funnel/react-router':
+        specifier: ^0.0.7
+        version: 0.0.7(react-router@7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react@19.2.5)
       axios:
         specifier: ^1.16.0
         version: 1.16.0
@@ -29,6 +32,9 @@ importers:
       tailwindcss:
         specifier: ^4.2.4
         version: 4.2.4
+      zod:
+        specifier: ^4.4.2
+        version: 4.4.2
     devDependencies:
       '@eslint/js':
         specifier: ^10.0.1
@@ -501,6 +507,17 @@ packages:
   '@typescript-eslint/visitor-keys@8.59.1':
     resolution: {integrity: sha512-LdDNl6C5iJExcM0Yh0PwAIBb9PrSiCsWamF/JyEZawm3kFDnRoaq3LGE4bpyRao/fWeGKKyw7icx0YxrLFC5Cg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@use-funnel/core@0.1.0':
+    resolution: {integrity: sha512-KEjBKTbOh5wd6CQZ1jYWhI6KuGrI9Pjn9CkmUgAYzonsyZE0lsiZ2/1RwsaWcxVO5RJBgfwCM8dRpibwm7An9w==}
+    peerDependencies:
+      react: '>=16.8'
+
+  '@use-funnel/react-router@0.0.7':
+    resolution: {integrity: sha512-PTpB3+oeM2TP9EMvU8jgOou0qS5JlPNIW0g8EXZbhF9Y9h9uExQ8uQDW7MAPxMSWmAWbQDnmgZPiqL6NmOdtxw==}
+    peerDependencies:
+      react: '>=16.8'
+      react-router: '>=7'
 
   '@vitejs/plugin-react@6.0.1':
     resolution: {integrity: sha512-l9X/E3cDb+xY3SWzlG1MOGt2usfEHGMNIaegaUGFsLkb3RCn/k8/TOXBcab+OndDI4TBtktT8/9BwwW8Vi9KUQ==}
@@ -1654,6 +1671,16 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 8.59.1
       eslint-visitor-keys: 5.0.1
+
+  '@use-funnel/core@0.1.0(react@19.2.5)':
+    dependencies:
+      react: 19.2.5
+
+  '@use-funnel/react-router@0.0.7(react-router@7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react@19.2.5)':
+    dependencies:
+      '@use-funnel/core': 0.1.0(react@19.2.5)
+      react: 19.2.5
+      react-router: 7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
 
   '@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@24.12.2)(jiti@2.6.1))':
     dependencies:
