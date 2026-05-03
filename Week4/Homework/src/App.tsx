@@ -1,5 +1,7 @@
-import '@/styles/index.css';
+import {router} from '@/app/providers/router';
+import '@/shared/styles/index.css';
+import {RouterProvider} from 'react-router';
 
 export default function App() {
-  return <div className='text-h2'>hi</div>;
+  return <RouterProvider router={router} />;
 }
