@@ -1,4 +1,5 @@
 import {z} from 'zod';
+import {PART_VALUES} from '@/shared/constants/part';
 
 /**
  * 공통 응답
@@ -16,6 +17,12 @@ export const ApiResponseSchema = z.object({
     })
     .optional(),
 });
+
+export const PartSchema = z
+  .string()
+  .refine((val) => (PART_VALUES as readonly string[]).includes(val), {
+    message: 'iOS, 안드로이드, 웹 중 하나를 선택해 주세요.',
+  });
 
 /**
  * 회원가입 요청
@@ -39,7 +46,7 @@ export const SignUpRequestSchema = z.object({
     .int()
     .min(1)
     .max(150, {message: '유효한 나이를 입력해 주세요.'}),
-  part: z.string().min(1, {message: '파트를 선택해 주세요.'}),
+  part: PartSchema,
 });
 
 /**
@@ -60,9 +67,31 @@ export const UserUpdateRequestSchema = z.object({
 });
 
 /**
+ * 유저 정보
+ */
+export const UserSchema = z.object({
+  id: z.number(),
+  loginId: z.string(),
+  name: z.string(),
+  email: z.string(),
+  age: z.number(),
+  part: z.string(),
+});
+
+/**
+ * 로그인 응답 데이터
+ */
+export const SignInResponseDataSchema = z.object({
+  userId: z.number(),
+});
+
+/**
  * 타입 추출
  */
 export type SignUpRequest = z.infer<typeof SignUpRequestSchema>;
 export type SignInRequest = z.infer<typeof SignInRequestSchema>;
 export type UserUpdateRequest = z.infer<typeof UserUpdateRequestSchema>;
 export type ApiResponse = z.infer<typeof ApiResponseSchema>;
+export type User = z.infer<typeof UserSchema>;
+export type SignInResponseData = z.infer<typeof SignInResponseDataSchema>;
+export type PartType = (typeof PART_VALUES)[number];
