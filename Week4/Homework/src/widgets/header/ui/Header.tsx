@@ -1,5 +1,5 @@
 import {Button} from '@/shared/ui/Button';
-import {useNavigate} from 'react-router';
+import {useLocation, useNavigate} from 'react-router';
 
 interface HeaderProps {
   userName: string;
@@ -7,6 +7,10 @@ interface HeaderProps {
 
 export const Header = ({userName}: HeaderProps) => {
   const navigate = useNavigate();
+  const {pathname} = useLocation();
+
+  const isMyPage = pathname === '/mypage';
+  const isMembers = pathname.startsWith('/mypage/members');
 
   const handleLogout = () => {
     localStorage.removeItem('userId');
@@ -22,13 +26,13 @@ export const Header = ({userName}: HeaderProps) => {
       <div className='flex flex-row gap-2 p-3'>
         <Button
           text='내 정보'
-          backgroundColor='bg-primary-300'
+          backgroundColor={isMyPage ? 'bg-primary-500' : 'bg-primary-300'}
           textColor='text-neutral-100'
           onClick={() => navigate('/mypage')}
         />
         <Button
           text='회원 조회'
-          backgroundColor='bg-primary-300'
+          backgroundColor={isMembers ? 'bg-primary-500' : 'bg-primary-300'}
           textColor='text-neutral-100'
           onClick={() => navigate('/mypage/members')}
         />
