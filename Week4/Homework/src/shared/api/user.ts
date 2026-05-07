@@ -3,7 +3,7 @@ import {API_ENDPOINTS} from '@/shared/api/endpoint';
 import type {ApiResponse, UserUpdateRequest} from '@/shared/api/schema';
 
 export const userApi = {
-  getUser: async (userId: string): Promise<ApiResponse> => {
+  getUser: async (userId: number): Promise<ApiResponse> => {
     const response = await privateAxios.get<ApiResponse>(
       API_ENDPOINTS.USER.DETAIL(userId)
     );
@@ -11,7 +11,7 @@ export const userApi = {
   },
 
   updateUser: async (
-    userId: string,
+    userId: number,
     data: UserUpdateRequest
   ): Promise<ApiResponse> => {
     const response = await privateAxios.patch<ApiResponse>(

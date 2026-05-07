@@ -5,6 +5,6 @@ export const API_ENDPOINTS = {
   },
   USER: {
     BASE: '/api/v1/users',
-    DETAIL: (userId: string) => `/api/v1/users/${userId}`,
+    DETAIL: (userId: number) => `/api/v1/users/${userId}`,
   },
 } as const;
