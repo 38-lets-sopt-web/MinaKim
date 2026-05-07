@@ -2,8 +2,8 @@ import {useState, type ChangeEvent} from 'react';
 import {Input} from '@/shared/ui/Input';
 import {Button} from '@/shared/ui/Button';
 import {Dropdown} from '@/shared/ui/Dropdown';
-import {SignUpRequestSchema} from '@/shared/api/schema';
-import {PART_OPTIONS, type PartType} from '@/shared/constants/part';
+import {SignUpRequestSchema, type PartType} from '@/shared/api/schema';
+import {PART_OPTIONS} from '@/shared/constants/part';
 
 interface ProfileData {
   name: string;
