@@ -4,9 +4,18 @@ import MemberListPage from '@/pages/member-list/ui/Page';
 import MyPageLayout from '@/pages/my-page-layout/ui/Page';
 import MyPage from '@/pages/my-page/ui/Page';
 import SignUpPage from '@/pages/sign-up/ui/Page';
-import {createBrowserRouter} from 'react-router';
+import {createBrowserRouter, Navigate} from 'react-router';
 
 export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+      <Navigate
+        to={localStorage.getItem('userId') ? '/mypage' : '/login'}
+        replace
+      />
+    ),
+  },
   {
     path: '/login',
     element: <LoginPage />,
