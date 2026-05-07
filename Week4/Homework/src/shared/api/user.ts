@@ -1,10 +1,10 @@
-import {privateAxios} from '@/shared/api/axios';
+import {publicAxios} from '@/shared/api/axios';
 import {API_ENDPOINTS} from '@/shared/api/endpoint';
 import type {ApiResponse, UserUpdateRequest} from '@/shared/api/schema';
 
 export const userApi = {
   getUser: async (userId: number): Promise<ApiResponse> => {
-    const response = await privateAxios.get<ApiResponse>(
+    const response = await publicAxios.get<ApiResponse>(
       API_ENDPOINTS.USER.DETAIL(userId)
     );
     return response.data;
@@ -14,7 +14,7 @@ export const userApi = {
     userId: number,
     data: UserUpdateRequest
   ): Promise<ApiResponse> => {
-    const response = await privateAxios.patch<ApiResponse>(
+    const response = await publicAxios.patch<ApiResponse>(
       API_ENDPOINTS.USER.DETAIL(userId),
       data
     );
@@ -22,7 +22,7 @@ export const userApi = {
   },
 
   getUserList: async (): Promise<ApiResponse> => {
-    const response = await privateAxios.get<ApiResponse>(
+    const response = await publicAxios.get<ApiResponse>(
       API_ENDPOINTS.USER.BASE
     );
     return response.data;
