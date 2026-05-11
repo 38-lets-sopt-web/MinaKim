@@ -21,7 +21,7 @@ export const GameMoleCell = ({type, onCatch}: GameMoleCellProps) => {
   };
 
   return (
-    <div
+    <button
       onClick={handleClick}
       className='border-primary-900 bg-primary-800 relative h-24 w-24 cursor-pointer overflow-hidden rounded-full border-4 shadow-inner'>
       {type === 'mole' && (
@@ -35,6 +35,6 @@ export const GameMoleCell = ({type, onCatch}: GameMoleCellProps) => {
           ☠
         </div>
       )}
-    </div>
+    </button>
   );
 };
