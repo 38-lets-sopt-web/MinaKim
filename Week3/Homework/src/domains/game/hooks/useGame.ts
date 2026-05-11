@@ -66,7 +66,7 @@ export const useGame = (
     return () => {
       if (timer) clearInterval(timer);
     };
-  }, [isActive, level, score, onSaveRanking, onGameEnd]);
+  }, [isActive, level]);
 
   /**
    * 게임 난이도 변경
