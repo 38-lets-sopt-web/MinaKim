@@ -1,9 +1,13 @@
 import {Button} from '@/components/Button';
 import {RankingTable} from '@/domains/ranking/components/RankingTable';
-import {useRanking} from '@/hooks/useRanking';
+import type {RankItem} from '@/types/rank-item-type';
 
-export const RankingContainer = () => {
-  const {rankings, clearRankings} = useRanking();
+interface RankingContainerProps {
+  rankings: RankItem[];
+  clearRankings: () => void;
+}
+
+export const RankingContainer = ({rankings, clearRankings}: RankingContainerProps) => {
 
   return (
     <section className='bg-primary-100 mx-auto flex w-full flex-col gap-5 rounded-2xl border border-gray-100 p-6 shadow-sm'>

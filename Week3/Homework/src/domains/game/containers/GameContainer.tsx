@@ -4,10 +4,13 @@ import {useGame} from '@/domains/game/hooks/useGame';
 import {useState} from 'react';
 import {GameResultModal} from '@/domains/game/components/GameResultModal';
 import {GameBoardContainer} from '@/domains/game/containers/GameBoardContainer';
-import {useRanking} from '@/hooks/useRanking';
+import type {RankItem} from '@/types/rank-item-type';
 
-export const GameContainer = () => {
-  const {updateRankings} = useRanking();
+interface GameContainerProps {
+  updateRankings: (newRank: RankItem) => void;
+}
+
+export const GameContainer = ({updateRankings}: GameContainerProps) => {
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
