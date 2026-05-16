@@ -1,67 +1,131 @@
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import axios from "axios";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
 
-const getUserProfile = async (userId: number) => {
+const USER_ID = 40;
+
+type UpdateUserPayload = {
+  name?: string;
+  email?: string;
+  age?: number;
+};
+
+const getUserProfile = async (id: number) => {
   const response = await axios.get(
-    `${import.meta.env.VITE_API_URL}/users/${userId}`,
+    `${import.meta.env.VITE_API_URL}/users/${id}`,
+  );
+  return response.data.data;
+};
+
+const updateUserProfile = async ({
+  id,
+  payload,
+}: {
+  id: number;
+  payload: UpdateUserPayload;
+}) => {
+  const response = await axios.patch(
+    `${import.meta.env.VITE_API_URL}/users/${id}`,
+    payload,
   );
   return response.data.data;
 };
 
 function App() {
-  const [inputValue, setInputValue] = useState("15");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
 
-  const [userId, setUserId] = useState(15);
+  const queryClient = useQueryClient();
 
-  const [shouldFetch, setShouldFetch] = useState(false);
-
-  const { data, isPending, isFetching, isError, error } = useQuery({
-    queryKey: ["user", userId],
-    queryFn: () => getUserProfile(userId),
-    enabled: shouldFetch,
+  const { data, isPending, isError, error } = useQuery({
+    queryKey: ["profile", USER_ID],
+    queryFn: () => getUserProfile(USER_ID),
   });
 
-  const handleFetch = () => {
-    if (!inputValue.trim()) return;
-    const parsed = Number(inputValue);
-    if (Number.isNaN(parsed)) return;
-    setUserId(parsed);
-    setShouldFetch(true);
+  const { mutate, isPending: isMutating } = useMutation({
+    mutationFn: (payload: UpdateUserPayload) =>
+      updateUserProfile({ id: USER_ID, payload }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["profile", USER_ID] });
+
+      setName("");
+      setEmail("");
+      setAge("");
+    },
+  });
+
+  const buildPayload = (): UpdateUserPayload => {
+    const payload: UpdateUserPayload = {};
+
+    if (name.trim()) payload.name = name.trim();
+    if (email.trim()) payload.email = email.trim();
+    if (age !== "") payload.age = Number(age);
+
+    return payload;
   };
+
+  if (isPending) return <div>로딩 중...</div>;
+  if (isError) return <div>에러: {error.message}</div>;
+
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: 8,
-        justifyContent: "center",
         alignItems: "center",
-        marginBottom: 12,
+        justifyContent: "center",
+        gap: 8,
       }}
     >
-      <h1>유저 프로필</h1>
-      <input
-        type="number"
-        value={inputValue}
-        onChange={(e) => {
-          setInputValue(e.target.value);
-          setShouldFetch(false);
+      <h1>내 프로필</h1>
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
         }}
-        placeholder="사용자 ID"
-      />
-      <button onClick={handleFetch}>데이터 가져오기</button>
-      {(isPending || isFetching) && shouldFetch && <div>로딩 중...</div>}
-      {isError && <div>에러: {error.message}</div>}
-      {data && (
-        <div>
-          <h2>id: {data.loginId}</h2>
-          <p>name: {data.name}</p>
-          <p>email: {data.email}</p>
-          <p>age: {data.age}</p>
-          <p>part: {data.part}</p>
-        </div>
-      )}
+      >
+        {data && (
+          <>
+            <p>name: {data.name}</p>
+            <p>email: {data.email}</p>
+            <p>age: {data.age}</p>
+            <p>part: {data.part}</p>
+          </>
+        )}
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          gap: 8,
+          flexWrap: "wrap",
+          justifyContent: "center",
+        }}
+      >
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="새 이름"
+        />
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="새 이메일"
+        />
+        <input
+          type="number"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+          placeholder="새 나이"
+        />
+        <button onClick={() => mutate(buildPayload())} disabled={isMutating}>
+          {isMutating ? "수정 중..." : "프로필 수정"}
+        </button>
+      </div>
     </div>
   );
 }
