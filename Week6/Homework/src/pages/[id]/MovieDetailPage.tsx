@@ -9,6 +9,7 @@ import {
 } from "@/pages/[id]/constants/tmdb-image";
 import { useMovieDetail } from "@/pages/[id]/hooks/use-movie-detail";
 import { useMovieAccountStates } from "@/pages/[id]/hooks/use-movie-account-states";
+import { useRatedMovies } from "@/pages/home/hooks/use-rated-movies";
 import { MovieInfoCard } from "@/pages/[id]/components/movie-info-card/MovieInfoCard";
 import { RatingCard } from "@/pages/[id]/components/rating-card/RatingCard";
 
@@ -19,6 +20,7 @@ export default function MovieDetailPage() {
 
   const { data: movie, isLoading } = useMovieDetail(movieId);
   const { data: accountStates } = useMovieAccountStates(movieId);
+  const { data: ratedMovies } = useRatedMovies();
 
   if (isLoading) {
     return (
@@ -42,8 +44,10 @@ export default function MovieDetailPage() {
     ? `${Math.floor(movie.runtime / 60)}시간 ${movie.runtime % 60}분`
     : "-";
 
-  const initialRating =
+  const ratingFromAccountStates =
     accountStates?.rated !== false ? accountStates?.rated.value : undefined;
+  const ratingFromRatedMovies = ratedMovies?.find((m) => m.id === movieId)?.rating;
+  const initialRating = ratingFromAccountStates ?? ratingFromRatedMovies;
 
   return (
     <main className="min-h-screen bg-neutral-200">
