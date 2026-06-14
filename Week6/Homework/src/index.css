@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "./shared/styles/design-system/fonts.css";
+@import "./shared/styles/design-system/tokens.css";
+@import "./shared/styles/design-system/typography.css";
